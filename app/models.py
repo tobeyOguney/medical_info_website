@@ -29,6 +29,11 @@ class User(AbstractUser):
         ("AC", "AC"),
         ("SS", "SS"),
     ]
+    TEST_STATUS_CHOICES = [
+        ("positive", "Positive"),
+        ("negative", "Negative"),
+        ("n/a", "Not Tested"),
+    ]
 
     # Note: basic information shared between users and medical practitioners will be inherited from parent class
     
@@ -37,12 +42,10 @@ class User(AbstractUser):
     sex = models.CharField(max_length=1, choices=SEX_CHOICES, default="")
     blood_type = models.CharField(max_length=3, choices=BLOODTYPE_CHOICES, default="")
     genotype = models.CharField(max_length=2, choices=GENOTYPE_CHOICES, default="")
-    # The required default values for the Boolean fields are set to False because false-negatives
-    # less risky than false-positives in the context of patient information reporting.
-    has_aids = models.BooleanField(default=False)
-    has_malaria = models.BooleanField(default=False)
-    has_ebola = models.BooleanField(default=False)
-    has_covid19 = models.BooleanField(default=False)
+    AIDS_status = models.CharField(max_length=10, choices=TEST_STATUS_CHOICES, default="")
+    malaria_status = models.CharField(max_length=10, choices=TEST_STATUS_CHOICES, default="")
+    ebola_status = models.CharField(max_length=10, choices=TEST_STATUS_CHOICES, default="")
+    COVID19_status = models.CharField(max_length=10, choices=TEST_STATUS_CHOICES, default="")
 
     # Flag to differentiate users from medical practitioners
     is_practitioner = models.BooleanField(default=False)
