@@ -1,3 +1,21 @@
 from django.shortcuts import render
 
-# Create your views here.
+
+class UserInformationView:
+    pass
+
+
+class UserRecordsView:
+    pass
+
+
+class UserRecordsStatisticsView:
+    pass
+
+
+class UserSignupView:
+    pass
+
+
+class PractitionerSignupView:
+    pass
