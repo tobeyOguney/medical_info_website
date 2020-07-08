@@ -41,3 +41,8 @@
         python manage.py runserver
 
 - Visit the displayed url in your favourite web browser.
+
+> **Note**: You can populate the local database relatively quickly via creating a superuser and using the admin panel at the `BASE_URL/admin` route.
+> ```
+> python manage.py createsuperuser
+> ```
