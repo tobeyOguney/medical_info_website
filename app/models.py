@@ -46,3 +46,8 @@ class User(AbstractUser):
 
     # Flag to differentiate users from medical practitioners
     is_practitioner = models.BooleanField(default=False)
+
+
+class Question(models.Model):
+    question = models.CharField(max_length=255, null=False)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
