@@ -16,9 +16,8 @@ class UserSignupForm(UserCreationForm):
         }
     
     def __init__(self, *args, **kwargs):
-        super(SignupForm, self).__init__(*args, **kwargs)
+        super(UserSignupForm, self).__init__(*args, **kwargs)
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
         self.fields['email'].required = True
         self.fields['is_practitioner'] = True
-        
