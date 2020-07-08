@@ -2,17 +2,27 @@ from django.views.generic.edit import CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.views.generic.list import ListView
 from django.shortcuts import render
+from django.views.generic.base import TemplateView, RedirectView
 from django.views import View
 from django.urls import reverse_lazy
+from django.shortcuts import redirect
 from .models import User, UserFieldQuestion
 from .forms import UserSignupForm
 
 
-class UserInformationView(LoginRequiredMixin, View):
+class UserRedirectView(LoginRequiredMixin, RedirectView):
+
+    def get_redirect_url(self, *args, **kwargs):
+        if self.request.user.is_practitioner:
+            return reverse_lazy("app:user_records")
+
+        return reverse_lazy("app:user_information")
+
+class UserInformationView(LoginRequiredMixin, TemplateView):
     template_name = 'app/user_records.html'
 
     def get_context_data(self, *args, **kwargs):
-        context = super(UserRecordsStatisticsView, self).get_context_data(*args, **kwargs)
+        context = super(UserInformationView, self).get_context_data(*args, **kwargs)
         
         #TODO
 
@@ -55,7 +65,7 @@ class UserRecordsView(LoginRequiredMixin, ListView):
     template_name = 'app/user_records.html'
 
 
-class UserRecordsStatisticsView(LoginRequiredMixin, View):
+class UserRecordsStatisticsView(LoginRequiredMixin, TemplateView):
     template_name = 'app/user_records_statistics.html'
 
     def get_context_data(self, *args, **kwargs):
@@ -83,5 +93,5 @@ class UserRecordsStatisticsView(LoginRequiredMixin, View):
 
 class UserSignupView(CreateView):
     form_class = UserSignupForm
-    template_name = 'app/user_signup.html'
+    template_name = 'registration/user_signup.html'
     success_url = reverse_lazy('app:user_information')
