@@ -12,7 +12,7 @@ class UserSignupForm(UserCreationForm):
             'first_name': "First Name",
             'last_name': "Last Name",
             'email': "Email Address",
-            'is_practitioner': "Medical Practitioner?",
+            'is_practitioner': "Medical Practitioner?"
         }
     
     def __init__(self, *args, **kwargs):
@@ -20,4 +20,4 @@ class UserSignupForm(UserCreationForm):
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
         self.fields['email'].required = True
-        self.fields['is_practitioner'] = True
+        self.fields['is_practitioner'].required = True
