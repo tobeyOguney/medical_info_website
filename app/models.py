@@ -33,14 +33,16 @@ class User(AbstractUser):
     # Note: basic information shared between users and medical practitioners will be inherited from parent class
     
     # Some user-specific medical information
-    age = models.IntegerField()
+    age = models.IntegerField(default=0)
     sex = models.CharField(max_length=1, choices=SEX_CHOICES)
     blood_type = models.CharField(max_length=3, choices=BLOODTYPE_CHOICES)
     genotype = models.CharField(max_length=2, choices=GENOTYPE_CHOICES)
-    has_aids = models.BooleanField()
-    has_malaria = models.BooleanField()
-    has_ebola = models.BooleanField()
-    has_covid19 = models.BooleanField()
+    # The required default values for the Boolean fields are set to False because false-negatives
+    # less risky than false-positives in the context of patient information reporting.
+    has_aids = models.BooleanField(default=False)
+    has_malaria = models.BooleanField(default=False)
+    has_ebola = models.BooleanField(default=False)
+    has_covid19 = models.BooleanField(default=False)
 
     # Flag to differentiate users from medical practitioners
     is_practitioner = models.BooleanField(null=False)
