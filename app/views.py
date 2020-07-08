@@ -5,6 +5,10 @@ class UserInformationView:
     pass
 
 
+class UserResponseSubmitView:
+    pass
+
+
 class UserRecordsView:
     pass
 
