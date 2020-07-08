@@ -7,7 +7,7 @@ urlpatterns = [
     path("users/", views.UserInformationView.as_view(), name="user_information"),
 
     # Routes to a page that contains a table which displays all users and their relevant medical records
-    path("records/", views.UserRecordsListView.as_view(), name="user_records"),
+    path("records/", views.UserRecordsView.as_view(), name="user_records"),
 
     # Routes to a page that displays the statistical details of the medical records gotten from the users
     path("statistics/", views.UserRecordStatisticsView.as_view(), name="user_record_statistics"),
