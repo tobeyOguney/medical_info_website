@@ -4,6 +4,7 @@ from django.views.generic.list import ListView
 from django.shortcuts import render
 from django.views import View
 from .models import User, UserFieldQuestion
+from .forms import UserSignupForm
 
 
 class UserInformationView(LoginRequiredMixin, View):
