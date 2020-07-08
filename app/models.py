@@ -34,9 +34,9 @@ class User(AbstractUser):
     
     # Some user-specific medical information
     age = models.IntegerField(default=0)
-    sex = models.CharField(max_length=1, choices=SEX_CHOICES)
-    blood_type = models.CharField(max_length=3, choices=BLOODTYPE_CHOICES)
-    genotype = models.CharField(max_length=2, choices=GENOTYPE_CHOICES)
+    sex = models.CharField(max_length=1, choices=SEX_CHOICES, default="")
+    blood_type = models.CharField(max_length=3, choices=BLOODTYPE_CHOICES, default="")
+    genotype = models.CharField(max_length=2, choices=GENOTYPE_CHOICES, default="")
     # The required default values for the Boolean fields are set to False because false-negatives
     # less risky than false-positives in the context of patient information reporting.
     has_aids = models.BooleanField(default=False)
