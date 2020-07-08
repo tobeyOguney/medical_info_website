@@ -13,5 +13,5 @@ urlpatterns = [
     path("records/", UserRecordsView.as_view(), name="user_records"),
 
     # Routes to a page that displays the statistical details of the medical records gotten from the users
-    path("statistics/", UserRecordStatisticsView.as_view(), name="user_record_statistics"),
+    path("statistics/", UserRecordsStatisticsView.as_view(), name="user_record_statistics"),
 ]
