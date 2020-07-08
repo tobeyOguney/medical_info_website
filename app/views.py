@@ -83,9 +83,3 @@ class UserSignupView(CreateView):
     form_class = UserSignupForm
     template_name = 'app/user_signup.html'
     success_url = reverse_lazy('app:user_information')
-
-
-class PractitionerSignupView(CreateView):
-    form_class = PractitionerSignupForm
-    template_name = 'app/practitioner_signup.html'
-    success_url = reverse_lazy('app:user_records')
