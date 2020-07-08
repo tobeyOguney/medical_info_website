@@ -12,7 +12,7 @@ class UserSignupForm(UserCreationForm):
             'first_name': "First Name",
             'last_name': "Last Name",
             'email': "Email Address",
-            'is_practitioner', "Medical Practitioner?"
+            'is_practitioner': "Medical Practitioner?",
         }
     
     def __init__(self, *args, **kwargs):
