@@ -51,6 +51,20 @@ class User(AbstractUser):
     is_practitioner = models.BooleanField(default=False)
 
 
-class Question(models.Model):
+class UserFieldQuestion(models.Model):
+    # Kindly add new field choices by appending to the list below
+    # This is because the ordering artifact is used in the application logic
+    FIELD_CHOICES = [
+        ("age", "Age"),
+        ("sex", "Sex"),
+        ("blood_type", "Blood Type"),
+        ("genotype", "Genotype"),
+        ("AIDS_status", "AIDS Status"),
+        ("malaria_status", "Malaria Status"),
+        ("ebola_status", "Ebola Status"),
+        ("COVID19_status", "COVID19 Status"),
+    ]
+
     question = models.CharField(max_length=255, null=False)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user_field = models.CharField(max_length=20, choices=FIELD_CHOICES, default="")
