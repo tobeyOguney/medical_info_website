@@ -1,25 +1,26 @@
 from django.shortcuts import render
+from django.views import View
 
 
-class UserInformationView:
+class UserInformationView(View):
     pass
 
 
-class UserResponseSubmitView:
+class UserResponseSubmitView(View):
     pass
 
 
-class UserRecordsView:
+class UserRecordsView(View):
     pass
 
 
-class UserRecordsStatisticsView:
+class UserRecordsStatisticsView(View):
     pass
 
 
-class UserSignupView:
+class UserSignupView(View):
     pass
 
 
-class PractitionerSignupView:
+class PractitionerSignupView(View):
     pass
