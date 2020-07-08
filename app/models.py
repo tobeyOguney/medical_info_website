@@ -45,4 +45,4 @@ class User(AbstractUser):
     has_covid19 = models.BooleanField(default=False)
 
     # Flag to differentiate users from medical practitioners
-    is_practitioner = models.BooleanField(null=False)
+    is_practitioner = models.BooleanField(default=False)
