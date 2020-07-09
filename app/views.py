@@ -6,6 +6,10 @@ from django.views.generic.base import TemplateView, RedirectView
 from django.views import View
 from django.urls import reverse_lazy
 from django.shortcuts import redirect
+from django.http import JsonResponse
+from rest_framework.generics import ListAPIView
+from .serializers import UserSerializer
+from .pagination import StandardResultsSetPagination
 from .models import User
 from .forms import (
     UserSignupForm, AgeForm, SexForm, BloodTypeForm, GenotypeForm, AIDSForm,
@@ -96,6 +100,44 @@ class UserInformationView(LoginRequiredMixin, TemplateView):
         return context
 
 
+class UserListing(ListAPIView):
+    # set the pagination and serializer class
+
+    pagination_class = StandardResultsSetPagination
+    serializer_class = UserSerializer
+
+    def get_queryset(self):
+        # filter the queryset based on the filters applied
+        queryList = User.objects.filter(is_practitioner=False).all()
+        AIDS_status = self.request.query_params.get('AIDS_status', None)
+        malaria_status = self.request.query_params.get('malaria_status', None)
+        ebola_status = self.request.query_params.get('ebola_status', None)
+        COVID19_status = self.request.query_params.get('COVID19_status', None)
+        sort_by = self.request.query_params.get('sort_by', None)
+
+        if AIDS_status:
+            queryList = queryList.filter(AIDS_status = AIDS_status)  
+        if malaria_status:
+            queryList = queryList.filter(malaria_status = malaria_status)  
+        if ebola_status:
+            queryList = queryList.filter(ebola_status = ebola_status)  
+        if COVID19_status:
+            queryList = queryList.filter(COVID19_status = COVID19_status)    
+
+        # sort it if applied on based on age
+
+        if sort_by == "age":
+            queryList = queryList.order_by("age")
+        if sort_by == "blood_type":
+            queryList = queryList.order_by("blood_type")
+        if sort_by == "genotype":
+            queryList = queryList.order_by("genotype")
+        if sort_by == "sex":
+            queryList = queryList.order_by("sex")
+            
+        return queryList
+
+
 class UserRecordsView(LoginRequiredMixin, ListView):
     """
     Serves a page that contains a table which displays all users and their relevant medical records
@@ -143,3 +185,12 @@ class UserSignupView(CreateView):
     form_class = UserSignupForm
     template_name = 'registration/user_signup.html'
     success_url = reverse_lazy('app:user_information')
+
+
+def get_test_status(request):
+    if request.method == "GET" and request.is_ajax():
+        test_status = [i[0] for i in User.TEST_STATUS_CHOICES]
+        data = {
+            "test_status": test_status, 
+        }
+        return JsonResponse(data, status = 200)
