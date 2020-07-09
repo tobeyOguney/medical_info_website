@@ -7,7 +7,7 @@ urlpatterns = [
     path("redirect/", UserRedirectView.as_view(), name="user_redirect"),
 
     # Routes to a page where users can fill in their medical information
-    path("users/", UserInformationView.as_view(), name="user_information"),
+    path("user/", UserInformationView.as_view(), name="user_information"),
 
     # Routes to a page that contains a table which displays all users and their relevant medical records
     path("records/", UserRecordsView.as_view(), name="user_records"),
