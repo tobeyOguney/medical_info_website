@@ -34,7 +34,6 @@ class UserInformationView(LoginRequiredMixin, TemplateView):
     template_name = 'app/user_information.html'
     
     def post(self, request, *args, **kwargs):
-        print(request.POST)
         if "age" in request.POST:
             request.user.age = request.POST.get('age')
         elif "sex" in request.POST:
