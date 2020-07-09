@@ -128,8 +128,8 @@ class UserRecordsStatisticsView(LoginRequiredMixin, TemplateView):
                 "not_tested_count": User.objects.filter(ebola_status=User.TEST_STATUS_CHOICES[2][0]).count(),
             },
             'covid19': {
-                "positive_count": User.objects.filter(COVID19_status=User.TEST_RESULT_CHOICES[0][0]).count(),
-                "not_tested_count": User.objects.filter(COVID19_status=User.TEST_RESULT_CHOICES[2][0]).count(),
+                "positive_count": User.objects.filter(COVID19_status=User.TEST_STATUS_CHOICES[0][0]).count(),
+                "not_tested_count": User.objects.filter(COVID19_status=User.TEST_STATUS_CHOICES[2][0]).count(),
             },
         })
         return context
