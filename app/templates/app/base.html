@@ -27,6 +27,9 @@
             <ul class="navbar-nav mr-auto">
                 {% block nav %}
                 {% endblock nav %}
+                <li class="nav-item active">
+                    <a class="nav-link" href={% url 'app:user_record_statistics' %}>Statistics <span class="sr-only"></span></a>
+                </li>
             </ul>
             <span class="navbar-text">
                 Medical information capture for practitioners.
