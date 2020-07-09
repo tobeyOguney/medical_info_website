@@ -1,4 +1,4 @@
-from .views import UserInformationView, UserRecordsStatisticsView, UserRecordsView, UserResponseSubmitView, UserRedirectView
+from .views import UserInformationView, UserRecordsStatisticsView, UserRecordsView, UserRedirectView
 from django.urls import path
 
 app_name = 'app'
@@ -6,11 +6,8 @@ urlpatterns = [
     # Routes to root page depending on if user is a medical practitioner or not
     path("redirect/", UserRedirectView.as_view(), name="user_redirect"),
 
-    # Routes to a page where users can fill in their medical information with relevant questions
+    # Routes to a page where users can fill in their medical information
     path("users/", UserInformationView.as_view(), name="user_information"),
-
-    # An endpoint that recieves the user's response to questions that request for medical information
-    path("users/question/<int:pk>", UserResponseSubmitView.as_view(), name="submit_user_response"),
 
     # Routes to a page that contains a table which displays all users and their relevant medical records
     path("records/", UserRecordsView.as_view(), name="user_records"),

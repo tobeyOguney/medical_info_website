@@ -22,12 +22,14 @@ class User(AbstractUser):
         ("B+", "B positive"),
         ("AB-", "AB negative"),
         ("AB+", "AB positive"),
+        ("n/a", "Not tested")
     ]
     GENOTYPE_CHOICES = [
         ("AA", "AA"),
         ("AS", "AS"),
         ("AC", "AC"),
         ("SS", "SS"),
+        ("n/a", "Not tested")
     ]
     TEST_STATUS_CHOICES = [
         ("positive", "Positive"),
@@ -39,32 +41,13 @@ class User(AbstractUser):
     
     # Some user-specific medical information
     age = models.IntegerField(default=0)
-    sex = models.CharField(max_length=1, choices=SEX_CHOICES, default="")
-    blood_type = models.CharField(max_length=3, choices=BLOODTYPE_CHOICES, default="")
-    genotype = models.CharField(max_length=2, choices=GENOTYPE_CHOICES, default="")
-    AIDS_status = models.CharField(max_length=10, choices=TEST_STATUS_CHOICES, default="")
-    malaria_status = models.CharField(max_length=10, choices=TEST_STATUS_CHOICES, default="")
-    ebola_status = models.CharField(max_length=10, choices=TEST_STATUS_CHOICES, default="")
-    COVID19_status = models.CharField(max_length=10, choices=TEST_STATUS_CHOICES, default="")
+    sex = models.CharField(max_length=1, choices=SEX_CHOICES, default=SEX_CHOICES[0][0])
+    blood_type = models.CharField(max_length=3, choices=BLOODTYPE_CHOICES, default=BLOODTYPE_CHOICES[-1][0])
+    genotype = models.CharField(max_length=3, choices=GENOTYPE_CHOICES, default=GENOTYPE_CHOICES[-1][0])
+    AIDS_status = models.CharField(max_length=10, choices=TEST_STATUS_CHOICES, default=TEST_STATUS_CHOICES[-1][0])
+    malaria_status = models.CharField(max_length=10, choices=TEST_STATUS_CHOICES, default=TEST_STATUS_CHOICES[-1][0])
+    ebola_status = models.CharField(max_length=10, choices=TEST_STATUS_CHOICES, default=TEST_STATUS_CHOICES[-1][0])
+    COVID19_status = models.CharField(max_length=10, choices=TEST_STATUS_CHOICES, default=TEST_STATUS_CHOICES[-1][0])
 
     # Flag to differentiate users from medical practitioners
     is_practitioner = models.BooleanField(default=False)
-
-
-class UserFieldQuestion(models.Model):
-    # Kindly add new field choices by appending to the list below
-    # This is because the ordering artifact is used in the application logic
-    FIELD_CHOICES = [
-        ("age", "Age"),
-        ("sex", "Sex"),
-        ("blood_type", "Blood Type"),
-        ("genotype", "Genotype"),
-        ("AIDS_status", "AIDS Status"),
-        ("malaria_status", "Malaria Status"),
-        ("ebola_status", "Ebola Status"),
-        ("COVID19_status", "COVID19 Status"),
-    ]
-
-    question = models.CharField(max_length=255, null=False)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    user_field = models.CharField(max_length=20, choices=FIELD_CHOICES, default="")

@@ -1,5 +1,5 @@
-from django import forms    
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
+from django.forms import ModelForm
 from .models import User
 
 
@@ -20,4 +20,67 @@ class UserSignupForm(UserCreationForm):
         self.fields['first_name'].required = True
         self.fields['last_name'].required = True
         self.fields['email'].required = True
-        self.fields['is_practitioner'].required = True
+
+
+class AgeForm(ModelForm):
+    password = None
+
+    class Meta:
+        model = User
+        fields = ('age',)
+
+
+class SexForm(ModelForm):
+    password = None
+
+    class Meta:
+        model = User
+        fields = ('sex',)
+
+
+class BloodTypeForm(ModelForm):
+    password = None
+
+    class Meta:
+        model = User
+        fields = ('blood_type',)
+
+
+class GenotypeForm(ModelForm):
+    password = None
+
+    class Meta:
+        model = User
+        fields = ('genotype',)
+
+
+class AIDSForm(ModelForm):
+    password = None
+
+    class Meta:
+        model = User
+        fields = ('AIDS_status',)
+
+
+class MalariaForm(ModelForm):
+    password = None
+
+    class Meta:
+        model = User
+        fields = ('malaria_status',)
+
+
+class EbolaForm(ModelForm):
+    password = None
+
+    class Meta:
+        model = User
+        fields = ('ebola_status',)
+
+
+class COVID19Form(ModelForm):
+    password = None
+
+    class Meta:
+        model = User
+        fields = ('COVID19_status',)
