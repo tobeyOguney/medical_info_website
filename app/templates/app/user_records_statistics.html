@@ -1,0 +1,65 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block nav %}
+<li class="nav-item active">
+    <a class="nav-link" href={% url 'app:user_information' %}>Biodata <span class="sr-only"></span></a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link disabled" href={% url 'app:user_record_statistics' %}>Statistics <span
+            class="sr-only">(current)</span></a>
+</li>
+
+{% endblock nav %}
+
+{% block content %}
+<div class="container">
+    <div class="col-md-6 offset-md-3 mt-5">
+        <div class="row row-cols-1 row-cols-md-2">
+            <div class="col mb-4">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-header">AIDS Statistics</div>
+                    <div class="card-body">
+                      <p class="card-text">
+                          <p><strong>People Infected:</strong> {{aids.positive_count}}</p>
+                          <p><strong>People Untested:</strong> {{aids.not_tested_count}}</p>
+                      </p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-header">Malaria Statistics</div>
+                    <div class="card-body">
+                      <p class="card-text">
+                          <p><strong>People Infected:</strong> {{malaria.positive_count}}</p>
+                          <p><strong>People Untested:</strong> {{malaria.not_tested_count}}</p>
+                      </p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-header">Ebola Statistics</div>
+                    <div class="card-body">
+                      <p class="card-text">
+                          <p><strong>People Infected:</strong> {{ebola.positive_count}}</p>
+                          <p><strong>People Untested:</strong> {{ebola.not_tested_count}}</p>
+                      </p>
+                    </div>
+                  </div>
+            </div>
+            <div class="col mb-4">
+                <div class="card text-white bg-dark mb-3">
+                    <div class="card-header">COVID-19 Statistics</div>
+                    <div class="card-body">
+                      <p class="card-text">
+                          <p><strong>People Infected:</strong> {{covid19.positive_count}}</p>
+                          <p><strong>People Untested:</strong> {{covid19.not_tested_count}}</p>
+                      </p>
+                    </div>
+                  </div>
+            </div>
+          </div>
+    </div>
+    {% endblock content %}
