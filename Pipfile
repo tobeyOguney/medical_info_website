@@ -9,6 +9,7 @@ verify_ssl = true
 django = "*"
 django-crispy-forms = "*"
 django-widget-tweaks = "*"
+django-rest-framework = "*"
 
 [requires]
 python_version = "3.8"

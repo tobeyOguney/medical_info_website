@@ -2,9 +2,17 @@
 {% load static %}
 
 {% block nav %}
+
+{% if user.is_practitioner %}
 <li class="nav-item active">
-    <a class="nav-link" href={% url 'app:user_information' %}>Biodata <span class="sr-only"></span></a>
+    <a class="nav-link" href={% url 'app:user_records' %}>Records <span class="sr-only"></span></a>
 </li>
+{% else %}
+<li class="nav-item active">
+  <a class="nav-link" href={% url 'app:user_information' %}>Biodata <span class="sr-only"></span></a>
+</li>
+{% endif %}
+
 <li class="nav-item active">
     <a class="nav-link disabled" href={% url 'app:user_record_statistics' %}>Statistics <span
             class="sr-only">(current)</span></a>
@@ -15,9 +23,11 @@
 {% block content %}
 <div class="container">
     <div class="col-md-6 offset-md-3 mt-5">
-        <div class="row row-cols-1 row-cols-md-2">
+        <h2 class="display-6">Statistics</h2>
+        <hr class="my-4">
+        <div class="row row-cols-1 row-cols-md-2" style="margin-top: 40px;">
             <div class="col mb-4">
-                <div class="card text-white bg-dark mb-3">
+                <div class="card text-white bg-secondary mb-3">
                     <div class="card-header">AIDS Statistics</div>
                     <div class="card-body">
                       <p class="card-text">
@@ -28,7 +38,7 @@
                   </div>
             </div>
             <div class="col mb-4">
-                <div class="card text-white bg-dark mb-3">
+                <div class="card text-white bg-secondary mb-3">
                     <div class="card-header">Malaria Statistics</div>
                     <div class="card-body">
                       <p class="card-text">
@@ -39,7 +49,7 @@
                   </div>
             </div>
             <div class="col mb-4">
-                <div class="card text-white bg-dark mb-3">
+                <div class="card text-white bg-secondary mb-3">
                     <div class="card-header">Ebola Statistics</div>
                     <div class="card-body">
                       <p class="card-text">
@@ -50,7 +60,7 @@
                   </div>
             </div>
             <div class="col mb-4">
-                <div class="card text-white bg-dark mb-3">
+                <div class="card text-white bg-secondary mb-3">
                     <div class="card-header">COVID-19 Statistics</div>
                     <div class="card-body">
                       <p class="card-text">
