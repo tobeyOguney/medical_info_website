@@ -130,3 +130,4 @@ STATICFILES_DIRS = (
 AUTH_USER_MODEL = 'app.User'
 
 LOGIN_REDIRECT_URL = 'app:user_redirect'
+LOGOUT_REDIRECT_URL = 'login'
