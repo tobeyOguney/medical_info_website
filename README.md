@@ -49,8 +49,8 @@
 
 ## Snapshots
 
-![ScreenShot](/static/images/screenshot_4?raw=true "Sign Up Page")
-![ScreenShot](/static/images/screenshot_3?raw=true "Log In Page")
-![ScreenShot](/static/images/screenshot_1?raw=true "Biodata Page")
-![ScreenShot](/static/images/screenshot_2?raw=true "Statistics Page")
-![ScreenShot](/static/images/screenshot_5?raw=true "User Records Page")
+![ScreenShot](/static/images/screenshot_4.PNG?raw=true "Sign Up Page")
+![ScreenShot](/static/images/screenshot_3.PNG?raw=true "Log In Page")
+![ScreenShot](/static/images/screenshot_1.PNG?raw=true "Biodata Page")
+![ScreenShot](/static/images/screenshot_2.PNG?raw=true "Statistics Page")
+![ScreenShot](/static/images/screenshot_5.PNG?raw=true "User Records Page")
