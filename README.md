@@ -46,3 +46,11 @@
 > ```
 > python manage.py createsuperuser
 > ```
+
+## Snapshots
+
+![Alt text](/static/images/screenshot_4?raw=true "Sign Up Page")
+![Alt text](/static/images/screenshot_3?raw=true "Log In Page")
+![Alt text](/static/images/screenshot_1?raw=true "Biodata Page")
+![Alt text](/static/images/screenshot_2?raw=true "Statistics Page")
+![Alt text](/static/images/screenshot_5?raw=true "User Records Page")
