@@ -1,0 +1,132 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block nav %}
+<li class="nav-item active">
+    <a class="nav-link disabled" href={% url 'app:user_records' %}>Records <span class="sr-only">(current)</span></a>
+</li>
+<li class="nav-item active">
+    <a class="nav-link" href={% url 'app:user_record_statistics' %}>Statistics <span class="sr-only"></span></a>
+</li>
+
+{% endblock nav %}
+
+{% block style %}
+    <style type="text/css">
+    .properties_table{
+       font-size: 14px;
+       margin:0 auto;
+    }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="col-md-10 offset-md-1 mt-5">
+        <h2 class="display-6">User Records</h2>
+        <hr class="my-4">
+        <section class="site_filter">
+            <div class="container-fluid" style="margin-top:50px;">
+                <div class="row">
+                    <div class="col-sm-2 col-2">
+                        <div class="form-group">
+                            <label for="aids_status">AIDS Status</label>
+                            <select class="form-control" id="AIDS_status" url = "{%url 'app:get_test_status' %}">
+                                <option value='all' selected>All Statuses</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-2">
+                        <div class="form-group">
+                            <label for="malaria_status">Malaria Status</label>
+                            <select class="form-control" id="malaria_status" url = "{%url 'app:get_test_status' %}">
+                                <option value='all' selected>All Statuses</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-2">
+                        <div class="form-group">
+                            <label for="ebola_status">Ebola Status</label>
+                            <select class="form-control" id="ebola_status" url = "{%url 'app:get_test_status' %}">
+                                <option value='all' selected>All Statuses</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-2">
+                        <div class="form-group">
+                            <label for="COVID19_status">COVID-19 Status</label>
+                            <select class="form-control dark" id="COVID19_status" url = "{%url 'app:get_test_status' %}">
+                                <option value='all' selected>All Statuses</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-2">
+                        <div class="form-group">
+                            <label for="Province">Sort By</label>
+                            <select class="form-control" id="sort_by">
+                                <option selected="true"
+                                disabled="disabled" value = "none">Choose option</option>
+                                <option value='age'>Age</option>
+                                <option value='sex'>Sex</option>
+                                <option value='blood_type'>Blood Type</option>
+                                <option value='genotype'>Genotype</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-sm-2 col-2">
+                        <div class="row justify-content-center align-self-center"
+                            style="color:white; margin-top:30px;">
+                            <a class="btn btn-secondary" id="display_all">Display all</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <br />
+        <section>
+            <div class="container-fluid">
+                <div id = "result-count" class="text-right">
+                    <span class='font-weight-bold'></span> results found.
+                </div>
+                <div class="row properties_table justify-content-center">
+                    <div id = "no_results">
+                        <h5>No results found</h5>
+                    </div>
+                    <table class="table table-responsive table-hover table-striped"
+                    id="list_data" data-toggle="table" url = "{% url 'app:user_listing' %}">
+                        <thead>
+                            <tr>
+                                <th data-field="first_name" width=10%>First Name</th>
+                                <th data-field="last_name" width=10%>Last name</th>
+                                <th data-field="age" width=10%>Age</th>
+                                <th data-field="sex" width=10%>Sex</th>
+                                <th data-field="blood_type" width=10%>Blood Type</th>
+                                <th data-field="genotype" width=10%>Genotype</th>
+                                <th data-field="AIDS_status" width=10%>AIDS Status</th>
+                                <th data-field="malaria_status" width=10%>Malaria Status</th>
+                                <th data-field="ebola_status" width=10%>Ebola Status</th>
+                                <th data-field="COVID19_status" width=10%>COVID-19 Status</th>
+                            </tr>
+                        </thead>
+                        <tbody id="listing">
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row justify-content-center" style="margin-top: 30px;">
+                    <nav aria-label="navigation">
+                        <ul class="pagination">
+                            <li class="page-item">
+                                <button class="btn btn-dark page-link" id="previous">Previous</button>
+                            </li>
+                            <li class="page-item pull-right">
+                                <button class="btn btn-dark page-link" id="next">Next</button>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </section>
+    </div>
+{% endblock %}
+{% block script %}
+    <script src="{% static 'js/app.js' %}""></script>
+{% endblock %}
