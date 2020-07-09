@@ -13,7 +13,7 @@
 > **Note**: If you do not already have it installed, kindly download the latest version of Python 3 [here](https://www.python.org/downloads/). This project will only work for Python >3.
 - Clone the project into your machine using the following terminal command
   
-        git clone TODO
+        git clone https://github.com/tobeyOguney/medical_info_website.git
 
 - Enter the root project directory via the following terminal command
 
