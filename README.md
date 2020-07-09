@@ -48,9 +48,17 @@
 > ```
 
 ## Snapshots
-
+#### Sign Up Page
 ![ScreenShot](/static/images/screenshot_4.PNG?raw=true "Sign Up Page")
+
+#### Log In Page
 ![ScreenShot](/static/images/screenshot_3.PNG?raw=true "Log In Page")
+
+#### Biodata Page
 ![ScreenShot](/static/images/screenshot_1.PNG?raw=true "Biodata Page")
+
+#### Statistics Page
 ![ScreenShot](/static/images/screenshot_2.PNG?raw=true "Statistics Page")
+
+#### User Records Page
 ![ScreenShot](/static/images/screenshot_5.PNG?raw=true "User Records Page")
